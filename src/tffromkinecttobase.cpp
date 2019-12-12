@@ -6,6 +6,7 @@
 #include <tf/transform_broadcaster.h>
 
 #define HEIGHT 0.2
+#define OFFSET_Y 0.28
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "robot_tf_firstlink");
@@ -18,8 +19,8 @@ int main(int argc, char **argv) {
     while (n.ok()) {
         broadcaster.sendTransform(
                 tf::StampedTransform(
-                        tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0, 0.0, HEIGHT)),
-                        ros::Time::now(), "base_link", "base_laser"));
+                        tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0, OFFSET_Y, HEIGHT)),
+                        ros::Time::now(), "base_link", "camera_depth_frame"));
         r.sleep();
     }
 }

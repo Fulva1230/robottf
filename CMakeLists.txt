@@ -134,8 +134,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/robottf_node.cpp)
-add_executable(${PROJETC_NAME}_tffromkinecttobase src/tffromkinecttobase.cpp)
-add_executable(${PROJETC_NAME}_locUpdater src/locUpdater.cpp)
+add_executable(${PROJECT_NAME}_tffromkinecttobase src/tffromkinecttobase.cpp)
+add_executable(${PROJECT_NAME}_locUpdater src/locUpdater.cpp)
 add_executable(${PROJECT_NAME}_moveExp src/moveExp.cpp)
 
 ## Rename C++ executable without prefix
@@ -152,8 +152,8 @@ add_executable(${PROJECT_NAME}_moveExp src/moveExp.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(${PROJECT_name}_tffromkinecttobase ${catkin_LIBRARIES})
-target_link_libraries(${PROJECT_name}_locUpdater ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_tffromkinecttobase ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_locUpdater ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME}_moveExp ${catkin_LIBRARIES})
 
 #############
