@@ -1,0 +1,9 @@
+<launch>
+  <include file="$(find roswww)/launch/start_bridge.launch">
+  </include>
+  <node name="serial_node" pkg="rosserial_python" type="serial_node.py" respawn="true" >
+    <param name="baud" value="115200" />
+    <param name="port" value="/dev/ttyACM0"/>
+  </node>
+  <rosparam command="load" file="$(find robottf)/params.yaml" ns="gains"/>
+</launch>

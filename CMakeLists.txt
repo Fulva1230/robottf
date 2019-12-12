@@ -136,6 +136,7 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/robottf_node.cpp)
 add_executable(${PROJETC_NAME}_tffromkinecttobase src/tffromkinecttobase.cpp)
 add_executable(${PROJETC_NAME}_locUpdater src/locUpdater.cpp)
+add_executable(${PROJECT_NAME}_moveExp src/moveExp.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,6 +154,7 @@ add_executable(${PROJETC_NAME}_locUpdater src/locUpdater.cpp)
 # )
 target_link_libraries(${PROJECT_name}_tffromkinecttobase ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_name}_locUpdater ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_moveExp ${catkin_LIBRARIES})
 
 #############
 ## Install ##
