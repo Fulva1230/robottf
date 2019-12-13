@@ -1,0 +1,11 @@
+<launch>
+    <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+        <arg name="fps_limit" value="15"/>
+    </include>
+    <node name="depthimage_to_laserscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan">
+        <remap from="image" to="/kinect2/sd/image_depth"/>
+        <remap from="camera_info" to="/kinect2/sd/camera_info"/>
+    </node>
+    <node name="robottf_locUpdater" pkg="robottf" type="robottf_locUpdater"/>
+    <node name="robottf_tffromkinecttobase" pkg="robottf" type="robottf_tffromkinecttobase"/>
+</launch>
