@@ -1,0 +1,13 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 -1.5707963267948966 0 -1.5707963267948966 base_link kinect2_link 100"/>
+    <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
+        <arg name="frame_id" value="base_link"/>
+        <arg name="args" value="--delete_db_on_start"/>
+        <arg name="rgb_topic" value="/kinect2/qhd/image_color_rect"/>
+        <arg name="depth_topic" value="/kinect2/qhd/image_depth_rect"/>
+        <arg name="camera_info_topic" value="/kinect2/qhd/camera_info"/>
+        <arg name="rgbd_sync"               default="true"/>
+        <arg name="odom_frame_id" value="odom"/>
+        <arg name="visual_odometry"          value="false"/>
+    </include>
+</launch>
