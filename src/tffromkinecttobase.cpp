@@ -16,10 +16,9 @@ int main(int argc, char **argv) {
 
     tf::TransformBroadcaster broadcaster;
     tf::Quaternion quaternion{};
-    quaternion.setRPY(0, 0, M_1_PI / 2);
+    quaternion.setEuler(0, 0, M_PI / 2);
     while (n.ok()) {
         broadcaster.sendTransform(
-
                 tf::StampedTransform(
                         tf::Transform(quaternion, tf::Vector3(0, OFFSET_Y, HEIGHT)),
                         ros::Time::now(), "base_link", "camera_depth_frame"));
