@@ -12,6 +12,6 @@
       <remap from="depth/image"     to="/kinect2/qhd/image_depth_rect"/>
       <remap from="rgb/camera_info" to="/kinect2/qhd/camera_info"/>
 
-      <remap from="rgbd_image"      to="rgbd_image"/>
+      <remap from="rgbd_image"      to="/rtabmap/rgbd_image"/>
     </node>
 </launch>
