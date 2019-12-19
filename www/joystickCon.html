@@ -31,8 +31,8 @@
 
         function publishTwist() {
             const wz_value = $('#wz')[0].valueAsNumber;
-            const vx_value = $('#vx_value')[0].valueAsNumber;
-            const vy_value = $('#vy_value')[0].valueAsNumber;
+            const vx_value = parseFloat($('#vx_value')[0].innerText);
+            const vy_value = parseFloat($('#vy_value')[0].innerText);
             $('#wz_value').html(wz_value);
             var twist = new ROSLIB.Message({
                 linear: {
@@ -53,17 +53,20 @@
             $('#wz').bind('input', publishTwist);
             var options = {
                 zone: document.getElementById('zone_joystick'),
-                mode: 'static',
-                position: {left: '50%', top: '50%'},
                 color: 'green',
                 size: 200
             };
             var manager = nipplejs.create(options);
-            manager.get(0).on('move', (evt, data) => {
+            manager.on('move', (evt, data) => {
                 var vx_value = 3 * data.distance * data.vector.x;
                 $('#vx_value').html(vx_value);
                 var vy_value = 3 * data.distance * data.vector.y;
                 $('#vy_value').html(vy_value);
+                publishTwist();
+            });
+            manager.on('end', (evt) => {
+                $('#vx_value').html(0);
+                $('#vy_value').html(0);
                 publishTwist();
             })
         });
@@ -73,7 +76,7 @@
             position: relative;
             left: 0;
             top: 0;
-            height: 200px;
+            height: 300px;
             width: 100%;
             background: rgba(0, 255, 0, 0.1);
         }
@@ -85,7 +88,7 @@
 <div class="container" id="modal">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Simple roslib Example (talker)
+            Omni-wheel vehicle controller
         </div>
         <div class="panel-body">
             <p>Vx</p>
