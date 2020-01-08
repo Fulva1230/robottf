@@ -1,4 +1,6 @@
 <launch>
+  <node name="robottf_locUpdater" pkg="robottf" type="robottf_locUpdater"/>
+  <node pkg="robottf" type="robottf_tffromkinecttobase" name="robottf_tffromkinecttobase" args="0.08 0 0 -1.5707963267948966 0 -1.5707963267948966 base_link kinect2_link 50"/>
   <include file="$(find roswww)/launch/start_bridge.launch">
   </include>
   <node name="serial_node" pkg="rosserial_python" type="serial_node.py" respawn="true" >

@@ -1,9 +1,7 @@
 <launch>
     <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
-        <arg name="fps_limit" value="15"/>
+        <arg name="fps_limit" value="10"/>
         <arg name="publish_tf" value="true"/>
         <arg name="nodelet_manager"   default="camera_nodelet_manager"/>
     </include>
-    <node name="robottf_locUpdater" pkg="robottf" type="robottf_locUpdater"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" args="0.008 0 0 -1.5707963267948966 0 -1.5707963267948966 base_link kinect2_link 100"/>
 </launch>
